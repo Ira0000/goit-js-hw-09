@@ -81,5 +81,25 @@ const markup = images
 `
   )
   .join('');
-console.log(markup);
+// console.log(markup);
 photoesContainer.insertAdjacentHTML('afterbegin', markup);
+
+// Описаний в документації
+import SimpleLightbox from 'simplelightbox';
+// Додатковий імпорт стилів
+
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
+const options = {
+  overlay: true,
+  overlayOpacity: 0.8,
+  captions: true,
+  captionSelector: 'img',
+  captionType: 'attr',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+};
+
+let gallery = new SimpleLightbox('.gallery a', options);
+gallery.on('show.simplelightbox', function () {});
