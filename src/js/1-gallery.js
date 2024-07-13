@@ -74,14 +74,14 @@ const markup = images
 		<img 
 			class="gallery-image" 
 			src=${item.preview} 
-			alt=${item.description}
+			alt="${item.description}"
 			/>
 	</a>
 </li>
 `
   )
   .join('');
-// console.log(markup);
+console.log(markup);
 photoesContainer.insertAdjacentHTML('afterbegin', markup);
 
 // Описаний в документації
@@ -90,14 +90,21 @@ import SimpleLightbox from 'simplelightbox';
 
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-const options = {
+// const options = {
+//   captions: true,
+//   captionSelector: 'img',
+//   captionType: 'attr',
+//   captionsData: 'alt',
+//   captionPosition: 'bottom',
+//   captionDelay: 250,
+// };
+
+let gallery = new SimpleLightbox('.gallery a', {
   captions: true,
   captionSelector: 'img',
   captionType: 'attr',
   captionsData: 'alt',
   captionPosition: 'bottom',
   captionDelay: 250,
-};
-
-let gallery = new SimpleLightbox('.gallery a', options);
+});
 gallery.on('show.simplelightbox', function () {});
