@@ -11,34 +11,30 @@ const textareaField = document.querySelector('textarea[name="message"]');
 feedbackForm.addEventListener('input', setOutput);
 
 function setOutput(event) {
-  if (event.target.type === 'email') {
-    const email = event.target.value;
-    formData.email = email;
-  } else {
-    const message = event.target.value;
-    formData.message = message;
-  }
-  // console.log(formData);
+  formData[event.target.name] = event.target.value.trim();
+
   localStorage.setItem(localStorageKey, JSON.stringify(formData));
 }
 
 fillFormFields();
 function fillFormFields() {
-  const savedInformation = JSON.parse(localStorage.getItem(localStorageKey));
+  const savedInformation = localStorage.getItem(localStorageKey);
   if (savedInformation) {
-    emailField.value = savedInformation.email;
-    textareaField.value = savedInformation.message;
+    let parsedInformation = JSON.parse(savedInformation);
+
+    formData.email = parsedInformation.email;
+    formData.message = parsedInformation.message;
+
+    emailField.value = formData.email;
+    textareaField.value = formData.message;
   }
 }
-feedbackForm.addEventListener('click', manageSubmit);
+feedbackForm.addEventListener('submit', manageSubmit);
 
 function manageSubmit(event) {
   event.preventDefault();
-  if (event.target.nodeName !== 'BUTTON') {
-    return;
-  }
 
-  if (emailField.value === '' || textareaField.value === '') {
+  if (emailField.value == '' || textareaField.value == '') {
     alert('Fill please all fields');
   } else {
     console.log(formData);
