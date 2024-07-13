@@ -91,8 +91,6 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const options = {
-  overlay: true,
-  overlayOpacity: 0.8,
   captions: true,
   captionSelector: 'img',
   captionType: 'attr',
