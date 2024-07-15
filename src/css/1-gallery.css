@@ -26,6 +26,7 @@ img {
   height: 208px;
 }
 
-.sl-overlay {
+.sl-wrapper {
   background: #2e2f42;
+  /* opacity: 0.9; */
 }
